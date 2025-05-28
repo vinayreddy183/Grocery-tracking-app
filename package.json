@@ -1,0 +1,48 @@
+{
+  "name": "grocery-price-tracker",
+  "version": "1.0.0",
+  "description": "A simple grocery price tracking app for home use",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "dist": "electron-builder --publish=never",
+    "pack": "electron-builder --dir",
+    "web-build": "mkdir -p web-dist && cp index.html web-dist/ && sed -i 's/require.*electron.*;//g' web-dist/index.html",
+    "web-serve": "python -m http.server 8000 -d web-dist"
+  },
+  
+  "keywords": [
+    "grocery",
+    "price-tracker",
+    "electron",
+    "home-management"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^36.3.1",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.yourname.grocery-price-tracker",
+    "productName": "Grocery Price Tracker",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "index.html",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.productivity"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+}
